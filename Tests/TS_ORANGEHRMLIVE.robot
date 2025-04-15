@@ -10,13 +10,40 @@ Test Tags           tnr
 
 
 *** Variables ***
-${ORANGEHRMLIVE_URL}    https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+${ORANGEHRMLIVE_URL}    https://opensource-demo.orangehrmlive.com/web/index.php
 
 
 *** Test Cases ***
-Connexion Réussie
-    [Tags]    tnr
-    Log    Test de connexion réussi
+
+Test Ajout d'un Utilisateur
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/admin/viewAdminModule']
+
+
+
+
+Test Ajout d'un employé
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
+#    ${first_name}    Set Variable    Coco
+#    ${middle_name}    Set Variable    Lapin
+#    ${last_name}    Set Variable    Au miel
+#    ${employee_id}    Set Variable    123456
+#
+#    # Remplissage du formulaire
+#    SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
+#    SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
+#    SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
+#    SeleniumLibrary.Input Text    xpath=//input[@name='employeeId']    ${employee_id}`
+
+
+
+
+
+
+
+
+
+
+
 
 
 *** Keywords ***
@@ -25,7 +52,7 @@ Ouvrir Orangehrmlive
     ...    Ouverture de Chrome à l'adresse ${ORANGEHRMLIVE_URL} et connexion
 
     # ETAPE DE LANCEMENT DE L APPLICATION
-    SeleniumLibrary.Open Browser    ${ORANGEHRMLIVE_URL}
+    SeleniumLibrary.Open Browser    ${ORANGEHRMLIVE_URL}/auth/login
     ...    browser=chrome
     ...    options=add_experimental_option('excludeSwitches', ['enable-logging'])
     SeleniumLibrary.Maximize Browser Window
