@@ -19,6 +19,7 @@ Test d'un Utilisateur
 
 
 
+
     # ======================
     # AJOUT D'UN UTILISATEUR
     # ======================
@@ -125,12 +126,104 @@ Test d'un Utilisateur
     Log    FIN DE LA SUPPRESSION
 
 
+# Test case for adding a new employee to the system.
+# This test navigates to the PIM module, clicks the "Add" button, fills out the employee form, and submits it.
+Test Ajout d'un employé
+    # Navigate to the PIM module
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
+    # Click the "Add" button to open the employee form
+    SeleniumLibrary.Click Element    xpath=//button[contains(., 'Add')]
+
+    # Set variables for employee details
+    ${first_name}    Set Variable    Coco
+    ${middle_name}    Set Variable    Lapin
+    ${last_name}    Set Variable    Au miel
+    ${username}    Set Variable    CocoLapin
+    ${password}    Set Variable    admin123
+    ${confirm_password}    Set Variable    admin123
+
+    # Fill out the employee form
+    SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
+    SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
+    SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
+
+
+Test Recherche d'un utilisateur
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/admin/viewAdminModule']
+    ${username}    Set Variable    Admin
+    ${employee_name}    Set Variable    Coco Lapin Au Miel
+
+    #test pour le username 
+    SeleniumLibrary.Input Text    xpath=//label[text()='Username']/following::input[1]    ${username}
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+    BuiltIn.Sleep    3
+    SeleniumLibrary.Click Element    xpath=//label[text()='Username']/following::button[@type='button'][1] 
+
+    #test pour le user role
+    Click Element    xpath=//label[text()='User Role']/following::div[contains(@class, 'oxd-select-text--after')][1]
+    Wait Until Element Is Visible    xpath=(//div[@role='option'])[2]    timeout=5s
+    Click Element    xpath=(//div[@role='option'])[2]
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+    BuiltIn.Sleep    3
+    SeleniumLibrary.Click Element    xpath=//label[text()='Username']/following::button[@type='button'][1] 
+
+    #test pour le employee name
+    SeleniumLibrary.Input Text    xpath=//label[text()='Employee Name']/following::input[1]   ${employee_name}
+    SeleniumLibrary.Wait Until Element Is Not Visible    xpath=//div[@data-v-3ebc98ba and contains(@class, 'oxd-autocomplete-dropdown') and contains(@class, '--positon-bottom') and .//span[text()='Searching....']]
+    SeleniumLibrary.Wait Until Element Is Visible       xpath=//div[@role='listbox']
+    SeleniumLibrary.Click Element    xpath=//div[@role='option'][1]
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+    BuiltIn.Sleep    3
+    SeleniumLibrary.Click Element    xpath=//label[text()='Username']/following::button[@type='button'][1] 
+    
+    #test pour le status
+    Click Element    xpath=//label[text()='Status']/following::div[contains(@class, 'oxd-select-text--after')][1]
+    Wait Until Element Is Visible    xpath=(//div[@role='option'])[2]    timeout=5s
+    Click Element    xpath=(//div[@role='option'])[3]
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+    BuiltIn.Sleep    3
 
 
 
 
+    # Submit the form
+    SeleniumLibrary.Click Element    xpath=//button[@type='submit']
 
 
+# Test case for modifying an existing employee's details.
+# This test searches for an employee, edits their details, and saves the changes.
+Test Modification d'un employé
+    # Search for the employee "Coco"
+    Rechercher Employé    coco
+
+    # Click the edit (pencil) icon for the employee
+    SeleniumLibrary.Click Element    xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-pencil-fill')]
+
+    # Modify the driver's license number
+    BuiltIn.Sleep    1
+    SeleniumLibrary.Click Element    xpath=//label[text()='Driver License Number']/following::input[1]
+    BuiltIn.Sleep    1
+    SeleniumLibrary.Press Keys       xpath=//label[text()='Driver License Number']/following::input[1]    CTRL+a+DELETE
+    BuiltIn.Sleep    1
+    SeleniumLibrary.Input Text       xpath=//label[text()='Driver License Number']/following::input[1]    DL123456789
+    BuiltIn.Sleep    1
+
+    # Save the changes
+    SeleniumLibrary.Click Element    xpath=//button[@type='submit']
+
+
+# Test case for deleting an employee from the system.
+# This test searches for an employee and deletes them, handling the confirmation dialog if applicable.
+Test Suppression d'un employé
+    # Search for the employee "Coco"
+    Rechercher Employé    coco
+
+    # Click the delete (trash) icon for the employee
+    SeleniumLibrary.Click Element    xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-trash')]
+
+    # Handle the confirmation dialog
+    BuiltIn.Sleep    1
+    SeleniumLibrary.Click Button     xpath=//button[text()=' Yes, Delete ']
 
 *** Keywords ***
 Ouvrir Orangehrmlive
@@ -155,6 +248,14 @@ Ouvrir Orangehrmlive
     SeleniumLibrary.Wait Until Page Contains Element    xpath=//span[text()='Dashboard']
     ${title}    SeleniumLibrary.Get Title
     BuiltIn.Should Contain    ${title}    OrangeHRM
+
+*** Keywords ***
+Rechercher Employé
+    [Arguments]    ${employee_name}
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
+    SeleniumLibrary.Input Text       xpath=//label[text()='Employee Name']/following::input[1]    ${employee_name}
+    SeleniumLibrary.Click Button     xpath=//button[text()=' Search ']
+    BuiltIn.Sleep    1
 
 Fermer Orangehrmlive
     [Documentation]
