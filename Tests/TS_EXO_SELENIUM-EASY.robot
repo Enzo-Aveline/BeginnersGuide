@@ -6,7 +6,7 @@ Library             Collections
 Test Setup          Ouvrir SeleniumEasy
 Test Teardown       Fermer SeleniumEasy
 
-Test Tags           tnr
+Test Tags           tnrqs
 
 
 *** Variables ***
