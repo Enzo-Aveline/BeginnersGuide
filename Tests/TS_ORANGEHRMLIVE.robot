@@ -15,11 +15,28 @@ ${ORANGEHRMLIVE_URL}    https://opensource-demo.orangehrmlive.com/web/index.php
 
 *** Test Cases ***
 
+# Test case for adding a new employee to the system.
+# This test navigates to the PIM module, clicks the "Add" button, fills out the employee form, and submits it.
+Test Ajout d'un employé
+    # Navigate to the PIM module
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
+    # Click the "Add" button to open the employee form
+    SeleniumLibrary.Click Element    xpath=//button[contains(., 'Add')]
+
+    # Set variables for employee details
+    ${first_name}    Set Variable    Coco
+    ${middle_name}    Set Variable    Lapin
+    ${last_name}    Set Variable    Au miel
+    ${username}    Set Variable    CocoLapin
+    ${password}    Set Variable    admin123
+    ${confirm_password}    Set Variable    admin123
+
+    # Fill out the employee form
+    SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
+    SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
+    SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
+
 Test d'un Utilisateur
-
-
-
-
     # ======================
     # AJOUT D'UN UTILISATEUR
     # ======================
@@ -126,26 +143,7 @@ Test d'un Utilisateur
     Log    FIN DE LA SUPPRESSION
 
 
-# Test case for adding a new employee to the system.
-# This test navigates to the PIM module, clicks the "Add" button, fills out the employee form, and submits it.
-Test Ajout d'un employé
-    # Navigate to the PIM module
-    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
-    # Click the "Add" button to open the employee form
-    SeleniumLibrary.Click Element    xpath=//button[contains(., 'Add')]
 
-    # Set variables for employee details
-    ${first_name}    Set Variable    Coco
-    ${middle_name}    Set Variable    Lapin
-    ${last_name}    Set Variable    Au miel
-    ${username}    Set Variable    CocoLapin
-    ${password}    Set Variable    admin123
-    ${confirm_password}    Set Variable    admin123
-
-    # Fill out the employee form
-    SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
-    SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
-    SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
 
 
 Test Recherche d'un utilisateur
@@ -201,11 +199,11 @@ Test Modification d'un employé
 
     # Modify the driver's license number
     BuiltIn.Sleep    1
-    SeleniumLibrary.Click Element    xpath=//label[text()='Driver License Number']/following::input[1]
+    SeleniumLibrary.Click Element    xpath=//label[text()="Driver's License Number"]/following::input[1]
     BuiltIn.Sleep    1
-    SeleniumLibrary.Press Keys       xpath=//label[text()='Driver License Number']/following::input[1]    CTRL+a+DELETE
+    SeleniumLibrary.Press Keys       xpath=//label[text()="Driver's License Number"]/following::input[1]    CTRL+a+DELETE
     BuiltIn.Sleep    1
-    SeleniumLibrary.Input Text       xpath=//label[text()='Driver License Number']/following::input[1]    DL123456789
+    SeleniumLibrary.Input Text       xpath=//label[text()="Driver's License Number"]/following::input[1]    DL123456789
     BuiltIn.Sleep    1
 
     # Save the changes
