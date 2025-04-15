@@ -14,16 +14,23 @@ ${ORANGEHRMLIVE_URL}    https://opensource-demo.orangehrmlive.com/web/index.php
 
 
 *** Test Cases ***
-#
-#Test Ajout d'un Utilisateur
-#    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/admin/viewAdminModule']
+
+Test Ajout d'un Utilisateur
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/admin/viewAdminModule']
 
 
 
 
+# Test case for adding a new employee to the system.
+# This test navigates to the PIM module, clicks the "Add" button, fills out the employee form, and submits it.
 Test Ajout d'un employé
+    # Navigate to the PIM module
     SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
+
+    # Click the "Add" button to open the employee form
     SeleniumLibrary.Click Element    xpath=//button[contains(., 'Add')]
+
+    # Set variables for employee details
     ${first_name}    Set Variable    Coco
     ${middle_name}    Set Variable    Lapin
     ${last_name}    Set Variable    Au miel
@@ -31,24 +38,31 @@ Test Ajout d'un employé
     ${password}    Set Variable    admin123
     ${confirm_password}    Set Variable    admin123
 
-    # Remplissage du formulaire
+    # Fill out the employee form
     SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
     SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
     SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
 
+    # Enable login details and fill out the login form
     SeleniumLibrary.Click Element    xpath=//div[contains(@class, 'oxd-switch-wrapper')]//span[contains(@class, 'oxd-switch-input')]
     SeleniumLibrary.Input Text    xpath=//label[text()='Username']/following::input[1]    ${username}
     SeleniumLibrary.Input Password    xpath=//label[text()='Password']/following::input[1]    ${password}
     SeleniumLibrary.Input Password    xpath=//label[text()='Confirm Password']/following::input[1]    ${confirm_password}
 
+    # Submit the form
     SeleniumLibrary.Click Element    xpath=//button[@type='submit']
 
 
-
+# Test case for modifying an existing employee's details.
+# This test searches for an employee, edits their details, and saves the changes.
 Test Modification d'un employé
+    # Search for the employee "Coco"
     Rechercher Employé    coco
+
+    # Click the edit (pencil) icon for the employee
     SeleniumLibrary.Click Element    xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-pencil-fill')]
 
+    # Modify the driver's license number
     BuiltIn.Sleep    1
     SeleniumLibrary.Click Element    xpath=//label[text()='Driver License Number']/following::input[1]
     BuiltIn.Sleep    1
@@ -56,17 +70,23 @@ Test Modification d'un employé
     BuiltIn.Sleep    1
     SeleniumLibrary.Input Text       xpath=//label[text()='Driver License Number']/following::input[1]    DL123456789
     BuiltIn.Sleep    1
+
+    # Save the changes
     SeleniumLibrary.Click Element    xpath=//button[@type='submit']
 
 
+# Test case for deleting an employee from the system.
+# This test searches for an employee and deletes them, handling the confirmation dialog if applicable.
 Test Suppression d'un employé
+    # Search for the employee "Coco"
     Rechercher Employé    coco
+
+    # Click the delete (trash) icon for the employee
     SeleniumLibrary.Click Element    xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-trash')]
 
-    # Handle confirmation dialog (if applicable)
+    # Handle the confirmation dialog
     BuiltIn.Sleep    1
     SeleniumLibrary.Click Button     xpath=//button[text()=' Yes, Delete ']
-
 
 *** Keywords ***
 Ouvrir Orangehrmlive
