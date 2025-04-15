@@ -35,6 +35,40 @@ Test Ajout d'un employé
     SeleniumLibrary.Input Text    xpath=//input[@name='employeeId']    ${employee_id}`
 
 
+Test Recherche d'un utilisateur
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/admin/viewAdminModule']
+    ${username}    Set Variable    Admin
+    ${employee_name}    Set Variable    Coco Lapin Au Miel
+
+    #test pour le username 
+    SeleniumLibrary.Input Text    xpath=//label[text()='Username']/following::input[1]    ${username}
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+    BuiltIn.Sleep    3
+    SeleniumLibrary.Click Element    xpath=//label[text()='Username']/following::button[@type='button'][1] 
+
+    #test pour le user role
+    Click Element    xpath=//label[text()='User Role']/following::div[contains(@class, 'oxd-select-text--after')][1]
+    Wait Until Element Is Visible    xpath=(//div[@role='option'])[2]    timeout=5s
+    Click Element    xpath=(//div[@role='option'])[2]
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+    BuiltIn.Sleep    3
+    SeleniumLibrary.Click Element    xpath=//label[text()='Username']/following::button[@type='button'][1] 
+
+    #test pour le employee name
+    SeleniumLibrary.Input Text    xpath=//label[text()='Employee Name']/following::input[1]   ${employee_name}
+    SeleniumLibrary.Wait Until Element Is Not Visible    xpath=//div[@data-v-3ebc98ba and contains(@class, 'oxd-autocomplete-dropdown') and contains(@class, '--positon-bottom') and .//span[text()='Searching....']]
+    SeleniumLibrary.Wait Until Element Is Visible       xpath=//div[@role='listbox']
+    SeleniumLibrary.Click Element    xpath=//div[@role='option'][1]
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+    BuiltIn.Sleep    3
+    SeleniumLibrary.Click Element    xpath=//label[text()='Username']/following::button[@type='button'][1] 
+    
+    #test pour le status
+    Click Element    xpath=//label[text()='Status']/following::div[contains(@class, 'oxd-select-text--after')][1]
+    Wait Until Element Is Visible    xpath=(//div[@role='option'])[2]    timeout=5s
+    Click Element    xpath=(//div[@role='option'])[3]
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+    BuiltIn.Sleep    3
 
 
 
