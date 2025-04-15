@@ -78,11 +78,6 @@ Test Recherche d'un utilisateur
     SeleniumLibrary.Click Element   xpath=//button[@type='submit']
     BuiltIn.Sleep    3
 
-    # Enable login details and fill out the login form
-    SeleniumLibrary.Click Element    xpath=//div[contains(@class, 'oxd-switch-wrapper')]//span[contains(@class, 'oxd-switch-input')]
-    SeleniumLibrary.Input Text    xpath=//label[text()='Username']/following::input[1]    ${username}
-    SeleniumLibrary.Input Password    xpath=//label[text()='Password']/following::input[1]    ${password}
-    SeleniumLibrary.Input Password    xpath=//label[text()='Confirm Password']/following::input[1]    ${confirm_password}
 
 
     # Submit the form
