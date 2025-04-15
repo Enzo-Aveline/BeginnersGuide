@@ -14,6 +14,9 @@ ${ORANGEHRMLIVE_URL}    https://opensource-demo.orangehrmlive.com/web/index.php/
 
 
 *** Test Cases ***
+Connexion Réussie
+    [Tags]    tnr
+    Log    Test de connexion réussi
 
 
 *** Keywords ***
