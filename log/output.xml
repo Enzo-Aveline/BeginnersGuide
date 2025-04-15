@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.10.11 on win32)" generated="2025-04-15T16:45:12.161592" rpa="false" schemaversion="5">
+<suite id="s1" name="TS ORANGEHRMLIVE" source="C:\Users\Bury\cours TEST\TP test\Tests\TS_ORANGEHRMLIVE.robot">
+<test id="s1-t1" name="Test Suppression d'un employé" line="91">
+<kw name="Ouvrir Orangehrmlive" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:12.546844" level="INFO">Opening browser 'chrome' to base url 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'.</msg>
+<arg>${ORANGEHRMLIVE_URL}/auth/login</arg>
+<arg>browser=chrome</arg>
+<arg>options=add_experimental_option('excludeSwitches', ['enable-logging'])</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-15T16:45:12.545844" elapsed="3.055377"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-15T16:45:15.602244" elapsed="0.023072"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-04-15T16:45:15.625316" elapsed="0.002251"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T16:45:15.627567" level="INFO">${username} = Admin</msg>
+<var>${username}</var>
+<arg>Admin</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T16:45:15.627567" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T16:45:15.628868" level="INFO">${password} = admin123</msg>
+<var>${password}</var>
+<arg>admin123</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T16:45:15.627567" elapsed="0.001301"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:15.628868" level="INFO">Typing text 'Admin' into text field 'xpath=//input[@name='username']'.</msg>
+<arg>xpath=//input[@name='username']</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:45:15.628868" elapsed="0.309534"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:15.938402" level="INFO">Typing text 'admin123' into text field 'xpath=//input[@name='password']'.</msg>
+<arg>xpath=//input[@name='password']</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:45:15.938402" elapsed="0.071285"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:16.009687" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:45:16.009687" elapsed="0.058730"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//span[text()='Dashboard']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-04-15T16:45:16.069432" elapsed="1.097445"/>
+</kw>
+<kw name="Get Title" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:17.170418" level="INFO">${title} = OrangeHRM</msg>
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-04-15T16:45:17.166877" elapsed="0.003541"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${title}</arg>
+<arg>OrangeHRM</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-15T16:45:17.171584" elapsed="0.000000"/>
+</kw>
+<doc>Ouverture de Chrome à l'adresse https://opensource-demo.orangehrmlive.com/web/index.php et connexion</doc>
+<status status="PASS" start="2025-04-15T16:45:12.544843" elapsed="4.626741"/>
+</kw>
+<kw name="Rechercher Employé">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:17.172725" level="INFO">Clicking element 'xpath=//a[@href='/web/index.php/pim/viewPimModule']'.</msg>
+<arg>xpath=//a[@href='/web/index.php/pim/viewPimModule']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:45:17.171584" elapsed="0.670994"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:17.843579" level="INFO">Typing text 'coco' into text field 'xpath=//label[text()='Employee Name']/following::input[1]'.</msg>
+<arg>xpath=//label[text()='Employee Name']/following::input[1]</arg>
+<arg>${employee_name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:45:17.842578" elapsed="0.288517"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:18.132095" level="INFO">Clicking button 'xpath=//button[text()=' Search ']'.</msg>
+<arg>xpath=//button[text()=' Search ']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:45:18.131095" elapsed="0.055623"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T16:45:19.199055" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T16:45:18.186718" elapsed="1.012337"/>
+</kw>
+<arg>coco</arg>
+<status status="PASS" start="2025-04-15T16:45:17.171584" elapsed="2.027471"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:19.199055" level="INFO">Clicking element 'xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-trash')]'.</msg>
+<msg time="2025-04-15T16:45:24.393588" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-48.png"&gt;&lt;img src="selenium-screenshot-48.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-04-15T16:45:24.393588" level="FAIL">Element with locator 'xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-trash')]' not found.</msg>
+<arg>xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-trash')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-04-15T16:45:19.199055" elapsed="5.198040">Element with locator 'xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-trash')]' not found.</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-04-15T16:45:24.397095" elapsed="0.001000"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>xpath=//button[text()=' Yes, Delete ']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-04-15T16:45:24.398095" elapsed="0.000000"/>
+</kw>
+<kw name="Fermer Orangehrmlive" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T16:45:27.406146" level="INFO">Slept 3 seconds.</msg>
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T16:45:24.398095" elapsed="3.008051"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:45:27.523747" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-49.png"&gt;&lt;img src="selenium-screenshot-49.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-15T16:45:27.406146" elapsed="0.117601"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-04-15T16:45:27.523747" elapsed="2.173732"/>
+</kw>
+<doc>Fermeture du navigateur
+On laisse un peu de temps pour visualiser l'écran final</doc>
+<status status="PASS" start="2025-04-15T16:45:24.398095" elapsed="5.300384"/>
+</kw>
+<tag>tnr</tag>
+<status status="FAIL" start="2025-04-15T16:45:12.543843" elapsed="17.154636">Element with locator 'xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-trash')]' not found.</status>
+</test>
+<status status="FAIL" start="2025-04-15T16:45:12.163884" elapsed="17.535598"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">tnr</stat>
+</tag>
+<suite>
+<stat name="TS ORANGEHRMLIVE" id="s1" pass="0" fail="1" skip="0">TS ORANGEHRMLIVE</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
