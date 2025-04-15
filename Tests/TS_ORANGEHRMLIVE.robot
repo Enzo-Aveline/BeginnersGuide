@@ -15,28 +15,114 @@ ${ORANGEHRMLIVE_URL}    https://opensource-demo.orangehrmlive.com/web/index.php
 
 *** Test Cases ***
 
-Test Ajout d'un Utilisateur
+Test d'un Utilisateur
+
+
+
+    # ======================
+    # AJOUT D'UN UTILISATEUR
+    # ======================
+
+    Log    DEBUT DE L'AJOUT
+
+    # Accéder à la page des utilisateurs
     SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/admin/viewAdminModule']
+    SeleniumLibrary.Click Element    xpath=//button[.//i[contains(@class, 'bi-plus')] and text()=' Add ']
+    # Select User Role
+    SeleniumLibrary.Click Element    xpath=//label[text()='User Role']/following::div[contains(@class, 'oxd-select-text--after')][1]
+    SeleniumLibrary.Click Element    xpath=//div[@role='listbox']//span[text()='Admin']
+
+    # Select Status
+    SeleniumLibrary.Click Element    xpath=//label[text()='Status']/following::div[contains(@class, 'oxd-select-text--after')][1]
+    SeleniumLibrary.Click Element    xpath=//div[@role='listbox']//span[text()='Disabled']
+    ${username}    Set Variable    Test Enzo
+    ${password}    Set Variable    Aumiel1
+    ${conf_password}    Set Variable    Aumiel1
+    ${name}    Set Variable    Enzo Tessier
+    # Remplissage des champs utilisateur
+    SeleniumLibrary.Click Element    xpath=//label[text()='User Role']/following::div[contains(@class, 'oxd-select-text--after')][1]
+    SeleniumLibrary.Click Element    xpath=//div[@role='listbox']//span[text()='Admin']
+
+    # Select Status
+    SeleniumLibrary.Input Text    xpath=//label[text()='Employee Name']/following::input[1]   ${name}
+    SeleniumLibrary.Wait Until Element Is Not Visible    xpath=//div[@data-v-3ebc98ba and contains(@class, 'oxd-autocomplete-dropdown') and contains(@class, '--positon-bottom') and .//span[text()='Searching....']]
+    SeleniumLibrary.Wait Until Element Is Visible       xpath=//div[@role='listbox']
+    SeleniumLibrary.Click Element    xpath=//div[@role='option'][1]
+
+    SeleniumLibrary.Input Text    xpath=//label[text()='Username']/following::input[1]    ${username}
+
+    SeleniumLibrary.Input Password    xpath=//label[text()='Password']/following::input[1]    ${password}
+
+    SeleniumLibrary.Input Password    xpath=//label[text()='Confirm Password']/following::input[1]    ${conf_password}
+
+    SeleniumLibrary.Click Button    xpath=//button[@type='submit' and contains(@class, 'oxd-button--secondary')]
+    
+
+    SeleniumLibrary.Wait Until Location Is    https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers    timeout=10s
+    ${current_url}    SeleniumLibrary.Get Location
+    BuiltIn.Should Be Equal As Strings    ${current_url}    https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers
+        
+    Log    FIN DE L'AJOUT
+    
+    
+    # ==========================
+    # RECHERCHE DE L'UTILISATEUR
+    # ==========================
+    
+    Log    DEBUT DE LA RECHERCHE
+
+    SeleniumLibrary.Input Text    xpath=//label[text()='Username']/following::input[1]    ${username}
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+    BuiltIn.Sleep    2
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=//button[@type='button' and contains(@class, 'oxd-icon-button') and .//i[contains(@class, 'bi-pencil-fill')]]
+    SeleniumLibrary.Click Element    xpath=//button[@type='button' and contains(@class, 'oxd-icon-button') and .//i[contains(@class, 'bi-pencil-fill')]]
 
 
 
+    Log    FIN DE LA RECHERCHE
 
-Test Ajout d'un employé
-    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
-#    ${first_name}    Set Variable    Coco
-#    ${middle_name}    Set Variable    Lapin
-#    ${last_name}    Set Variable    Au miel
-#    ${employee_id}    Set Variable    123456
-#
-#    # Remplissage du formulaire
-#    SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
-#    SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
-#    SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
-#    SeleniumLibrary.Input Text    xpath=//input[@name='employeeId']    ${employee_id}`
-
+    # =============================
+    # MODIFICATION DE L'UTILISATEUR
+    # =============================
+    
+    Log    DEBUT DE LA MODIFICATION
+    # Modifier le nom d'utilisateur
+    SeleniumLibrary.Press Keys       xpath=//label[text()='Username']/following::input[1]    CTRL+a+DELETE
+    ${new_username}    Set Variable    Test Enzo 2
+    SeleniumLibrary.Input Text    xpath=//label[text()='Username']/following::input[1]    ${new_username}
+    BuiltIn.Sleep    2
 
 
 
+    # Sauvegarder les modifications
+    SeleniumLibrary.Click Button    xpath=//button[@type='submit' and contains(@class, 'oxd-button--secondary')]
+
+    Log    FIN DE LA MODIFICATION
+
+    # ==========================
+    # RECHERCHE DE L'UTILISATEUR
+    # ==========================
+    
+    Log    DEBUT DE LA RECHERCHE
+    BuiltIn.Sleep    5
+
+    SeleniumLibrary.Input Text    xpath=//label[text()='Username']/following::input[1]    ${new_username}
+    SeleniumLibrary.Click Element   xpath=//button[@type='submit']
+
+
+    Log    FIN DE LA RECHERCHE
+
+    # =============================
+    # SUPRESSION DE L'UTILISATEUR
+    # =============================
+    
+    Log    DEBUT DE LA SUPPRESSION
+    BuiltIn.Sleep    2
+    SeleniumLibrary.Click Element    xpath=//div[contains(@class, 'oxd-table-cell-actions')]//button[contains(@class, 'oxd-icon-button') and .//i[contains(@class, 'bi-trash')]]
+    BuiltIn.Sleep    2
+    SeleniumLibrary.Click Button    xpath=//button[@type='button' and contains(@class, 'oxd-button--label-danger') and normalize-space()='Yes, Delete']
+    SeleniumLibrary.Wait Until Page Does Not Contain Element    xpath=//div[contains(@class, 'oxd-dialog-sheet')]    timeout=10s
+    Log    FIN DE LA SUPPRESSION
 
 
 

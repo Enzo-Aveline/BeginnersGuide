@@ -1,228 +1,426 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20250330 19:39:31.078" rpa="false" schemaversion="4">
-<suite id="s1" name="Rappel RBF" source="c:\Users\lucas\OneDrive\Documents\GitHub\BeginnersGuide\Tests\Rappel_RBF.robot">
-<kw name="Log Report And Console" type="SETUP">
-<arg>Global Suite Setup</arg>
-<kw name="Log" library="BuiltIn">
-<arg>${message}</arg>
-<arg>level=${level}</arg>
-<arg>console=True</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250330 19:39:31.180" level="INFO">Global Suite Setup</msg>
-<status status="PASS" starttime="20250330 19:39:31.164" endtime="20250330 19:39:31.186"/>
+<robot generator="Robot 7.2.2 (Python 3.12.6 on win32)" generated="2025-04-15T16:55:28.698529" rpa="false" schemaversion="5">
+<suite id="s1" name="TS ORANGEHRMLIVE" source="c:\Users\minog\Documents\GitHub\BeginnersGuide\Tests\TS_ORANGEHRMLIVE.robot">
+<test id="s1-t1" name="Test d'un Utilisateur" line="18">
+<kw name="Ouvrir Orangehrmlive" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:28.995766" level="INFO">Opening browser 'chrome' to base url 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'.</msg>
+<arg>${ORANGEHRMLIVE_URL}/auth/login</arg>
+<arg>browser=chrome</arg>
+<arg>options=add_experimental_option('excludeSwitches', ['enable-logging'])</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-04-15T16:55:28.994767" elapsed="3.725505"/>
 </kw>
-<status status="PASS" starttime="20250330 19:39:31.164" endtime="20250330 19:39:31.189"/>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-04-15T16:55:32.721416" elapsed="0.030381"/>
 </kw>
-<test id="s1-t1" name="TC Evaluate" line="403">
-<kw name="testSetup" type="SETUP">
-<kw name="Log Report And Console">
-<arg>${EMPTY}</arg>
-<kw name="Log" library="BuiltIn">
-<arg>${message}</arg>
-<arg>level=${level}</arg>
-<arg>console=True</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250330 19:39:31.198" level="INFO"/>
-<status status="PASS" starttime="20250330 19:39:31.193" endtime="20250330 19:39:31.199"/>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-04-15T16:55:32.751797" elapsed="0.001466"/>
 </kw>
-<status status="PASS" starttime="20250330 19:39:31.193" endtime="20250330 19:39:31.199"/>
-</kw>
-<kw name="Log Report And Console">
-<arg>Global Test Setup</arg>
-<kw name="Log" library="BuiltIn">
-<arg>${message}</arg>
-<arg>level=${level}</arg>
-<arg>console=True</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250330 19:39:31.201" level="INFO">Global Test Setup</msg>
-<status status="PASS" starttime="20250330 19:39:31.201" endtime="20250330 19:39:31.201"/>
-</kw>
-<status status="PASS" starttime="20250330 19:39:31.199" endtime="20250330 19:39:31.201"/>
-</kw>
-<status status="PASS" starttime="20250330 19:39:31.193" endtime="20250330 19:39:31.201"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${resultat}</var>
-<arg>${myNumber1}+${myNumber2}</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250330 19:39:31.206" level="INFO">${resultat} = 11</msg>
-<status status="PASS" starttime="20250330 19:39:31.206" endtime="20250330 19:39:31.206"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${resultat}</var>
-<arg>${myNumber} + 10</arg>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T16:55:32.753263" level="INFO">${username} = Admin</msg>
+<var>${username}</var>
+<arg>Admin</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250330 19:39:31.206" level="INFO">${resultat} = 2 + 10</msg>
-<status status="PASS" starttime="20250330 19:39:31.206" endtime="20250330 19:39:31.206"/>
+<status status="PASS" start="2025-04-15T16:55:32.753263" elapsed="0.001002"/>
 </kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${randomNumber}</var>
-<arg>random.randint(0,9)</arg>
-<arg>modules=random</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250330 19:39:31.206" level="INFO">${randomNumber} = 8</msg>
-<status status="PASS" starttime="20250330 19:39:31.206" endtime="20250330 19:39:31.206"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${randomNumberList}</var>
-<arg>random.sample(range(1, 11), 4)</arg>
-<arg>modules=random</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250330 19:39:31.217" level="INFO">${randomNumberList} = [10, 3, 8, 7]</msg>
-<status status="PASS" starttime="20250330 19:39:31.217" endtime="20250330 19:39:31.217"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${min}</var>
-<arg>${1}</arg>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T16:55:32.754265" level="INFO">${password} = admin123</msg>
+<var>${password}</var>
+<arg>admin123</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250330 19:39:31.224" level="INFO">${min} = 1</msg>
-<status status="PASS" starttime="20250330 19:39:31.223" endtime="20250330 19:39:31.225"/>
+<status status="PASS" start="2025-04-15T16:55:32.754265" elapsed="0.000000"/>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${max}</var>
-<arg>${10}</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250330 19:39:31.229" level="INFO">${max} = 10</msg>
-<status status="PASS" starttime="20250330 19:39:31.228" endtime="20250330 19:39:31.229"/>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:32.755264" level="INFO">Typing text 'Admin' into text field 'xpath=//input[@name='username']'.</msg>
+<arg>xpath=//input[@name='username']</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:32.754265" elapsed="0.279447"/>
 </kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${random}</var>
-<arg>random.randint(${min}, ${max})</arg>
-<arg>modules=random, sys</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250330 19:39:31.229" level="INFO">${random} = 6</msg>
-<status status="PASS" starttime="20250330 19:39:31.229" endtime="20250330 19:39:31.229"/>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:33.033712" level="INFO">Typing text 'admin123' into text field 'xpath=//input[@name='password']'.</msg>
+<arg>xpath=//input[@name='password']</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:33.033712" elapsed="0.125187"/>
 </kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${testTitle}</var>
-<arg>'g'=='l'</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250330 19:39:31.229" level="INFO">${testTitle} = False</msg>
-<status status="PASS" starttime="20250330 19:39:31.229" endtime="20250330 19:39:31.229"/>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:33.159899" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:33.159899" elapsed="0.062461"/>
 </kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${testPrice}</var>
-<arg>'h'=='h'</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250330 19:39:31.229" level="INFO">${testPrice} = True</msg>
-<status status="PASS" starttime="20250330 19:39:31.229" endtime="20250330 19:39:31.229"/>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//span[text()='Dashboard']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-04-15T16:55:33.222360" elapsed="1.110805"/>
 </kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${testAll}</var>
-<arg>${testTitle} and ${testPrice}</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250330 19:39:31.242" level="INFO">${testAll} = False</msg>
-<status status="PASS" starttime="20250330 19:39:31.242" endtime="20250330 19:39:31.242"/>
+<kw name="Get Title" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:34.338276" level="INFO">${title} = OrangeHRM</msg>
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-04-15T16:55:34.334166" elapsed="0.004110"/>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${mail}</var>
-<arg>test@sogeti.com</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250330 19:39:31.242" level="INFO">${mail} = test@sogeti.com</msg>
-<status status="PASS" starttime="20250330 19:39:31.242" endtime="20250330 19:39:31.249"/>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${title}</arg>
+<arg>OrangeHRM</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-15T16:55:34.338276" elapsed="0.000997"/>
 </kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${urlEncoded2}</var>
-<arg>urllib.parse.quote("${mail}")</arg>
-<arg>modules=urllib</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250330 19:39:31.249" level="INFO">${urlEncoded2} = test%40sogeti.com</msg>
-<status status="PASS" starttime="20250330 19:39:31.249" endtime="20250330 19:39:31.249"/>
+<doc>Ouverture de Chrome à l'adresse https://opensource-demo.orangehrmlive.com/web/index.php et connexion</doc>
+<status status="PASS" start="2025-04-15T16:55:28.994767" elapsed="5.344506"/>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${url}</var>
-<arg>http://www.cwi.nl:80/%7Eguido/Python.html</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20250330 19:39:31.249" level="INFO">${url} = http://www.cwi.nl:80/%7Eguido/Python.html</msg>
-<status status="PASS" starttime="20250330 19:39:31.249" endtime="20250330 19:39:31.249"/>
-</kw>
-<kw name="Evaluate" library="BuiltIn">
-<var>${hostname}</var>
-<arg>urllib.parse.urlparse("${url}").hostname</arg>
-<arg>modules=urllib, urllib.parse</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20250330 19:39:31.249" level="INFO">${hostname} = www.cwi.nl</msg>
-<status status="PASS" starttime="20250330 19:39:31.249" endtime="20250330 19:39:31.258"/>
-</kw>
-<kw name="testTeardown" type="TEARDOWN">
-<kw name="Log Report And Console">
-<arg>Global Test Teardown</arg>
-<kw name="Log" library="BuiltIn">
-<arg>${message}</arg>
-<arg>level=${level}</arg>
-<arg>console=True</arg>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:55:34.339273" level="INFO">DEBUT DE L'AJOUT</msg>
+<arg>DEBUT DE L'AJOUT</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250330 19:39:31.258" level="INFO">Global Test Teardown</msg>
-<status status="PASS" starttime="20250330 19:39:31.258" endtime="20250330 19:39:31.258"/>
+<status status="PASS" start="2025-04-15T16:55:34.339273" elapsed="0.000000"/>
 </kw>
-<status status="PASS" starttime="20250330 19:39:31.258" endtime="20250330 19:39:31.258"/>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:34.340280" level="INFO">Clicking element 'xpath=//a[@href='/web/index.php/admin/viewAdminModule']'.</msg>
+<arg>xpath=//a[@href='/web/index.php/admin/viewAdminModule']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:34.340280" elapsed="1.664520"/>
 </kw>
-<kw name="Log Report And Console">
-<arg>${TEST STATUS}</arg>
-<kw name="Log" library="BuiltIn">
-<arg>${message}</arg>
-<arg>level=${level}</arg>
-<arg>console=True</arg>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:36.005845" level="INFO">Clicking element 'xpath=//button[.//i[contains(@class, 'bi-plus')] and text()=' Add ']'.</msg>
+<arg>xpath=//button[.//i[contains(@class, 'bi-plus')] and text()=' Add ']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:36.005845" elapsed="0.944978"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:36.951817" level="INFO">Clicking element 'xpath=//label[text()='User Role']/following::div[contains(@class, 'oxd-select-text--after')][1]'.</msg>
+<arg>xpath=//label[text()='User Role']/following::div[contains(@class, 'oxd-select-text--after')][1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:36.951817" elapsed="2.078925"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:39.031205" level="INFO">Clicking element 'xpath=//div[@role='listbox']//span[text()='Admin']'.</msg>
+<arg>xpath=//div[@role='listbox']//span[text()='Admin']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.031205" elapsed="0.066901"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:39.099106" level="INFO">Clicking element 'xpath=//label[text()='Status']/following::div[contains(@class, 'oxd-select-text--after')][1]'.</msg>
+<arg>xpath=//label[text()='Status']/following::div[contains(@class, 'oxd-select-text--after')][1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.098106" elapsed="0.050514"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:39.149620" level="INFO">Clicking element 'xpath=//div[@role='listbox']//span[text()='Disabled']'.</msg>
+<arg>xpath=//div[@role='listbox']//span[text()='Disabled']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.149620" elapsed="0.046691"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T16:55:39.197649" level="INFO">${username} = Test Enzo</msg>
+<var>${username}</var>
+<arg>Test Enzo</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.197649" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T16:55:39.198832" level="INFO">${password} = Aumiel1</msg>
+<var>${password}</var>
+<arg>Aumiel1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.198832" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T16:55:39.200088" level="INFO">${conf_password} = Aumiel1</msg>
+<var>${conf_password}</var>
+<arg>Aumiel1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.200088" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T16:55:39.201124" level="INFO">${name} = Enzo Tessier</msg>
+<var>${name}</var>
+<arg>Enzo Tessier</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.201124" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:39.202124" level="INFO">Clicking element 'xpath=//label[text()='User Role']/following::div[contains(@class, 'oxd-select-text--after')][1]'.</msg>
+<arg>xpath=//label[text()='User Role']/following::div[contains(@class, 'oxd-select-text--after')][1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.202124" elapsed="0.042504"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:39.245626" level="INFO">Clicking element 'xpath=//div[@role='listbox']//span[text()='Admin']'.</msg>
+<arg>xpath=//div[@role='listbox']//span[text()='Admin']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.244628" elapsed="0.041279"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:39.286904" level="INFO">Typing text 'Enzo Tessier' into text field 'xpath=//label[text()='Employee Name']/following::input[1]'.</msg>
+<arg>xpath=//label[text()='Employee Name']/following::input[1]</arg>
+<arg>${name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.286904" elapsed="0.066589"/>
+</kw>
+<kw name="Wait Until Element Is Not Visible" owner="SeleniumLibrary">
+<arg>xpath=//div[@data-v-3ebc98ba and contains(@class, 'oxd-autocomplete-dropdown') and contains(@class, '--positon-bottom') and .//span[text()='Searching....']]</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" start="2025-04-15T16:55:39.353493" elapsed="5.053494"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//div[@role='listbox']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-04-15T16:55:44.406987" elapsed="0.017536"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:44.425522" level="INFO">Clicking element 'xpath=//div[@role='option'][1]'.</msg>
+<arg>xpath=//div[@role='option'][1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:44.425522" elapsed="0.046423"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:44.474282" level="INFO">Typing text 'Test Enzo' into text field 'xpath=//label[text()='Username']/following::input[1]'.</msg>
+<arg>xpath=//label[text()='Username']/following::input[1]</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:44.473278" elapsed="0.068938"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:44.543497" level="INFO">Typing password into text field 'xpath=//label[text()='Password']/following::input[1]'.</msg>
+<msg time="2025-04-15T16:55:44.572941" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>xpath=//label[text()='Password']/following::input[1]</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:44.543497" elapsed="0.073739"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:44.618302" level="INFO">Typing password into text field 'xpath=//label[text()='Confirm Password']/following::input[1]'.</msg>
+<msg time="2025-04-15T16:55:44.644335" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>xpath=//label[text()='Confirm Password']/following::input[1]</arg>
+<arg>${conf_password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:44.617775" elapsed="0.065485"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:44.684260" level="INFO">Clicking button 'xpath=//button[@type='submit' and contains(@class, 'oxd-button--secondary')]'.</msg>
+<arg>xpath=//button[@type='submit' and contains(@class, 'oxd-button--secondary')]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:44.684260" elapsed="0.058238"/>
+</kw>
+<kw name="Wait Until Location Is" owner="SeleniumLibrary">
+<arg>https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the current URL is ``expected``.</doc>
+<status status="PASS" start="2025-04-15T16:55:44.743497" elapsed="4.514205"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:49.261102" level="INFO">${current_url} = https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers</msg>
+<var>${current_url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-04-15T16:55:49.257702" elapsed="0.003400"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${current_url}</arg>
+<arg>https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-04-15T16:55:49.262111" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:55:49.263111" level="INFO">FIN DE L'AJOUT</msg>
+<arg>FIN DE L'AJOUT</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250330 19:39:31.258" level="INFO">PASS</msg>
-<status status="PASS" starttime="20250330 19:39:31.258" endtime="20250330 19:39:31.258"/>
+<status status="PASS" start="2025-04-15T16:55:49.263111" elapsed="0.000000"/>
 </kw>
-<status status="PASS" starttime="20250330 19:39:31.258" endtime="20250330 19:39:31.258"/>
-</kw>
-<kw name="Log Report And Console">
-<arg>${TEST MESSAGE}</arg>
-<kw name="Log" library="BuiltIn">
-<arg>${message}</arg>
-<arg>level=${level}</arg>
-<arg>console=True</arg>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:55:49.264111" level="INFO">DEBUT DE LA RECHERCHE</msg>
+<arg>DEBUT DE LA RECHERCHE</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250330 19:39:31.258" level="INFO"/>
-<status status="PASS" starttime="20250330 19:39:31.258" endtime="20250330 19:39:31.258"/>
+<status status="PASS" start="2025-04-15T16:55:49.263111" elapsed="0.001000"/>
 </kw>
-<status status="PASS" starttime="20250330 19:39:31.258" endtime="20250330 19:39:31.258"/>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:49.264111" level="INFO">Typing text 'Test Enzo' into text field 'xpath=//label[text()='Username']/following::input[1]'.</msg>
+<arg>xpath=//label[text()='Username']/following::input[1]</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:49.264111" elapsed="0.383325"/>
 </kw>
-<if>
-<branch type="IF" condition="'${TEST STATUS}' == 'PASS'">
-<kw name="Set Test Message" library="BuiltIn">
-<arg>Test OK\nOn pourait mettre la synthèse des étapes/vérificarions effectuées</arg>
-<doc>Sets message for the current test case.</doc>
-<msg timestamp="20250330 19:39:31.275" level="INFO">Set test message to:
-Test OK
-On pourait mettre la synthèse des étapes/vérificarions effectuées</msg>
-<status status="PASS" starttime="20250330 19:39:31.275" endtime="20250330 19:39:31.275"/>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:49.648439" level="INFO">Clicking element 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:49.648439" elapsed="0.045674"/>
 </kw>
-<status status="PASS" starttime="20250330 19:39:31.258" endtime="20250330 19:39:31.275"/>
-</branch>
-<status status="PASS" starttime="20250330 19:39:31.258" endtime="20250330 19:39:31.275"/>
-</if>
-<status status="PASS" starttime="20250330 19:39:31.258" endtime="20250330 19:39:31.275"/>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T16:55:51.695167" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T16:55:49.695110" elapsed="2.000057"/>
 </kw>
-<doc>Utilisation d'évaluation d'instructions python</doc>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@type='button' and contains(@class, 'oxd-icon-button') and .//i[contains(@class, 'bi-pencil-fill')]]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-04-15T16:55:51.696175" elapsed="0.010126"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:51.707311" level="INFO">Clicking element 'xpath=//button[@type='button' and contains(@class, 'oxd-icon-button') and .//i[contains(@class, 'bi-pencil-fill')]]'.</msg>
+<arg>xpath=//button[@type='button' and contains(@class, 'oxd-icon-button') and .//i[contains(@class, 'bi-pencil-fill')]]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:51.707311" elapsed="0.361922"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:55:52.070720" level="INFO">FIN DE LA RECHERCHE</msg>
+<arg>FIN DE LA RECHERCHE</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T16:55:52.070720" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:55:52.071722" level="INFO">DEBUT DE LA MODIFICATION</msg>
+<arg>DEBUT DE LA MODIFICATION</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T16:55:52.071722" elapsed="0.000000"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:52.072913" level="INFO">Sending key(s) ('CTRL+a+DELETE',) to xpath=//label[text()='Username']/following::input[1] element.</msg>
+<msg time="2025-04-15T16:55:52.599428" level="INFO">Pressing special key CONTROL down.</msg>
+<msg time="2025-04-15T16:55:52.600429" level="INFO">Sending key a</msg>
+<msg time="2025-04-15T16:55:52.600429" level="INFO">Pressing special key DELETE down.</msg>
+<msg time="2025-04-15T16:55:52.600429" level="INFO">Releasing special key CONTROL.</msg>
+<msg time="2025-04-15T16:55:52.600429" level="INFO">Releasing special key DELETE.</msg>
+<arg>xpath=//label[text()='Username']/following::input[1]</arg>
+<arg>CTRL+a+DELETE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-04-15T16:55:52.072913" elapsed="0.540677"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-15T16:55:52.614598" level="INFO">${new_username} = Test Enzo 2</msg>
+<var>${new_username}</var>
+<arg>Test Enzo 2</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-15T16:55:52.613590" elapsed="0.001008"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:52.614598" level="INFO">Typing text 'Test Enzo 2' into text field 'xpath=//label[text()='Username']/following::input[1]'.</msg>
+<arg>xpath=//label[text()='Username']/following::input[1]</arg>
+<arg>${new_username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:52.614598" elapsed="0.052804"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T16:55:54.667685" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T16:55:52.667402" elapsed="2.000283"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:54.669696" level="INFO">Clicking button 'xpath=//button[@type='submit' and contains(@class, 'oxd-button--secondary')]'.</msg>
+<arg>xpath=//button[@type='submit' and contains(@class, 'oxd-button--secondary')]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:54.668708" elapsed="0.049597"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:55:54.718305" level="INFO">FIN DE LA MODIFICATION</msg>
+<arg>FIN DE LA MODIFICATION</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T16:55:54.718305" elapsed="0.001449"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:55:54.719754" level="INFO">DEBUT DE LA RECHERCHE</msg>
+<arg>DEBUT DE LA RECHERCHE</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T16:55:54.719754" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T16:55:59.721178" level="INFO">Slept 5 seconds.</msg>
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T16:55:54.720750" elapsed="5.000938"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:55:59.721688" level="INFO">Typing text 'Test Enzo 2' into text field 'xpath=//label[text()='Username']/following::input[1]'.</msg>
+<arg>xpath=//label[text()='Username']/following::input[1]</arg>
+<arg>${new_username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:55:59.721688" elapsed="0.472082"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:56:00.195291" level="INFO">Clicking element 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:56:00.195291" elapsed="0.040977"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:56:00.237677" level="INFO">FIN DE LA RECHERCHE</msg>
+<arg>FIN DE LA RECHERCHE</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T16:56:00.237677" elapsed="0.001013"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:56:00.238690" level="INFO">DEBUT DE LA SUPPRESSION</msg>
+<arg>DEBUT DE LA SUPPRESSION</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T16:56:00.238690" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T16:56:02.240470" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T16:56:00.239688" elapsed="2.000782"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:56:02.241492" level="INFO">Clicking element 'xpath=//div[contains(@class, 'oxd-table-cell-actions')]//button[contains(@class, 'oxd-icon-button') and .//i[contains(@class, 'bi-trash')]]'.</msg>
+<arg>xpath=//div[contains(@class, 'oxd-table-cell-actions')]//button[contains(@class, 'oxd-icon-button') and .//i[contains(@class, 'bi-trash')]]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:56:02.241492" elapsed="0.050620"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T16:56:04.293409" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T16:56:02.293190" elapsed="2.000219"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:56:04.294417" level="INFO">Clicking button 'xpath=//button[@type='button' and contains(@class, 'oxd-button--label-danger') and normalize-space()='Yes, Delete']'.</msg>
+<arg>xpath=//button[@type='button' and contains(@class, 'oxd-button--label-danger') and normalize-space()='Yes, Delete']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-04-15T16:56:04.294417" elapsed="0.059360"/>
+</kw>
+<kw name="Wait Until Page Does Not Contain Element" owner="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'oxd-dialog-sheet')]</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` disappears from the current page.</doc>
+<status status="PASS" start="2025-04-15T16:56:04.354817" elapsed="5.035599"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-04-15T16:56:09.391942" level="INFO">FIN DE LA SUPPRESSION</msg>
+<arg>FIN DE LA SUPPRESSION</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-04-15T16:56:09.391942" elapsed="0.000000"/>
+</kw>
+<kw name="Fermer Orangehrmlive" type="TEARDOWN">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-04-15T16:56:12.393472" level="INFO">Slept 3 seconds.</msg>
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-04-15T16:56:09.393470" elapsed="3.000002"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-04-15T16:56:12.516084" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-15.png"&gt;&lt;img src="selenium-screenshot-15.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-04-15T16:56:12.394511" elapsed="0.121573"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-04-15T16:56:12.517084" elapsed="2.178191"/>
+</kw>
+<doc>Fermeture du navigateur
+On laisse un peu de temps pour visualiser l'écran final</doc>
+<status status="PASS" start="2025-04-15T16:56:09.391942" elapsed="5.303333"/>
+</kw>
 <tag>tnr</tag>
-<status status="PASS" starttime="20250330 19:39:31.189" endtime="20250330 19:39:31.279">Test OK
-On pourait mettre la synthèse des étapes/vérificarions effectuées</status>
+<status status="PASS" start="2025-04-15T16:55:28.993764" elapsed="45.702508"/>
 </test>
-<kw name="Log Report And Console" type="TEARDOWN">
-<arg>Global Suite Teardown</arg>
-<kw name="Log" library="BuiltIn">
-<arg>${message}</arg>
-<arg>level=${level}</arg>
-<arg>console=True</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20250330 19:39:31.279" level="INFO">Global Suite Teardown</msg>
-<status status="PASS" starttime="20250330 19:39:31.279" endtime="20250330 19:39:31.290"/>
-</kw>
-<status status="PASS" starttime="20250330 19:39:31.279" endtime="20250330 19:39:31.290"/>
-</kw>
-<doc>Permet d'avoir des exemples d'utilisation de Robot Framework
-
-C'est un condensé de tout ce que l'on doit connaitre avant de faire des tests Selenium/Appium
-
-C'est un résumé du User Guide et des keywords indispensables de la librairie Builtin</doc>
-<meta name="Author">eric.mersier@sogeti.com</meta>
-<meta name="Date">18/10/2020</meta>
-<meta name="Version">1.0</meta>
-<status status="PASS" starttime="20250330 19:39:31.089" endtime="20250330 19:39:31.292"/>
+<status status="PASS" start="2025-04-15T16:55:28.702623" elapsed="45.994651"/>
 </suite>
 <statistics>
 <total>
@@ -232,7 +430,7 @@ C'est un résumé du User Guide et des keywords indispensables de la librairie B
 <stat pass="1" fail="0" skip="0">tnr</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Rappel RBF">Rappel RBF</stat>
+<stat name="TS ORANGEHRMLIVE" id="s1" pass="1" fail="0" skip="0">TS ORANGEHRMLIVE</stat>
 </suite>
 </statistics>
 <errors>
