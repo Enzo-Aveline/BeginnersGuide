@@ -14,35 +14,55 @@ ${ORANGEHRMLIVE_URL}    https://opensource-demo.orangehrmlive.com/web/index.php
 
 
 *** Test Cases ***
-
-Test Ajout d'un Utilisateur
-    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/admin/viewAdminModule']
+#
+#Test Ajout d'un Utilisateur
+#    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/admin/viewAdminModule']
 
 
 
 
 Test Ajout d'un employé
     SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
-#    ${first_name}    Set Variable    Coco
-#    ${middle_name}    Set Variable    Lapin
-#    ${last_name}    Set Variable    Au miel
-#    ${employee_id}    Set Variable    123456
-#
-#    # Remplissage du formulaire
-#    SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
-#    SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
-#    SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
-#    SeleniumLibrary.Input Text    xpath=//input[@name='employeeId']    ${employee_id}`
+    SeleniumLibrary.Click Element    xpath=//button[contains(., 'Add')]
+    ${first_name}    Set Variable    Coco
+    ${middle_name}    Set Variable    Lapin
+    ${last_name}    Set Variable    Au miel
+    ${username}    Set Variable    CocoLapin
+    ${password}    Set Variable    admin123
+    ${confirm_password}    Set Variable    admin123
+
+    # Remplissage du formulaire
+    SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
+    SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
+    SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
+
+    SeleniumLibrary.Click Element    xpath=//div[contains(@class, 'oxd-switch-wrapper')]//span[contains(@class, 'oxd-switch-input')]
+    SeleniumLibrary.Input Text    xpath=//label[text()='Username']/following::input[1]    ${username}
+    SeleniumLibrary.Input Password    xpath=//label[text()='Password']/following::input[1]    ${password}
+    SeleniumLibrary.Input Password    xpath=//label[text()='Confirm Password']/following::input[1]    ${confirm_password}
+
+    SeleniumLibrary.Click Element    xpath=//button[@type='submit']
 
 
 
+Test Modification d'un employé
 
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
 
+    SeleniumLibrary.Input Text    xpath=//label[text()='Employee Name']/following::input[1]    coco
 
+    SeleniumLibrary.Click Button    xpath=//button[text()=' Search ']
 
+    SeleniumLibrary.Click Element    xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-pencil-fill')]
 
-
-
+    BuiltIn.Sleep    1
+    SeleniumLibrary.Click Element    xpath=//label[text()='Driver License Number']/following::input[1]
+    BuiltIn.Sleep    1
+    SeleniumLibrary.Press Keys       xpath=//label[text()='Driver License Number']/following::input[1]    CTRL+a+DELETE
+    BuiltIn.Sleep    1
+    SeleniumLibrary.Input Text       xpath=//label[text()='Driver License Number']/following::input[1]    DL123456789
+    BuiltIn.Sleep    1
+    SeleniumLibrary.Click Element    xpath=//button[@type='submit']
 
 
 
