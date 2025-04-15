@@ -23,16 +23,16 @@ Test Ajout d'un Utilisateur
 
 Test Ajout d'un employé
     SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
-#    ${first_name}    Set Variable    Coco
-#    ${middle_name}    Set Variable    Lapin
-#    ${last_name}    Set Variable    Au miel
-#    ${employee_id}    Set Variable    123456
-#
-#    # Remplissage du formulaire
-#    SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
-#    SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
-#    SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
-#    SeleniumLibrary.Input Text    xpath=//input[@name='employeeId']    ${employee_id}`
+    ${first_name}    Set Variable    Coco
+    ${middle_name}    Set Variable    Lapin
+    ${last_name}    Set Variable    Au miel
+    ${employee_id}    Set Variable    123456
+
+    # Remplissage du formulaire
+    SeleniumLibrary.Input Text    xpath=//input[@name='firstName']    ${first_name}
+    SeleniumLibrary.Input Text    xpath=//input[@name='middleName']    ${middle_name}
+    SeleniumLibrary.Input Text    xpath=//input[@name='lastName']    ${last_name}
+    SeleniumLibrary.Input Text    xpath=//input[@name='employeeId']    ${employee_id}`
 
 
 
