@@ -46,13 +46,7 @@ Test Ajout d'un employé
 
 
 Test Modification d'un employé
-
-    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
-
-    SeleniumLibrary.Input Text    xpath=//label[text()='Employee Name']/following::input[1]    coco
-
-    SeleniumLibrary.Click Button    xpath=//button[text()=' Search ']
-
+    Rechercher Employé    coco
     SeleniumLibrary.Click Element    xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-pencil-fill')]
 
     BuiltIn.Sleep    1
@@ -64,6 +58,14 @@ Test Modification d'un employé
     BuiltIn.Sleep    1
     SeleniumLibrary.Click Element    xpath=//button[@type='submit']
 
+
+Test Suppression d'un employé
+    Rechercher Employé    coco
+    SeleniumLibrary.Click Element    xpath=//div[text()='Coco Lapin']/ancestor::div[@role='row']//i[contains(@class, 'bi-trash')]
+
+    # Handle confirmation dialog (if applicable)
+    BuiltIn.Sleep    1
+    SeleniumLibrary.Click Button     xpath=//button[text()=' Yes, Delete ']
 
 
 *** Keywords ***
@@ -89,6 +91,14 @@ Ouvrir Orangehrmlive
     SeleniumLibrary.Wait Until Page Contains Element    xpath=//span[text()='Dashboard']
     ${title}    SeleniumLibrary.Get Title
     BuiltIn.Should Contain    ${title}    OrangeHRM
+
+*** Keywords ***
+Rechercher Employé
+    [Arguments]    ${employee_name}
+    SeleniumLibrary.Click Element    xpath=//a[@href='/web/index.php/pim/viewPimModule']
+    SeleniumLibrary.Input Text       xpath=//label[text()='Employee Name']/following::input[1]    ${employee_name}
+    SeleniumLibrary.Click Button     xpath=//button[text()=' Search ']
+    BuiltIn.Sleep    1
 
 Fermer Orangehrmlive
     [Documentation]
