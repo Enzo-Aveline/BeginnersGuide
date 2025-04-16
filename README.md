@@ -25,11 +25,20 @@ Pour garantir le bon fonctionnement et une logique cohérente, exécutez les tes
 5. **Suppression d'un employé** : Supprime l'employé pour nettoyer les données.
 
 Suivez cet ordre pour éviter les problèmes de dépendance et assurer une exécution fluide de la suite de tests.
+
+
 ## Prérequis
 - Python (version 3.7 ou supérieure)
 - Robot Framework
 - SeleniumLibrary
 - ChromeDriver (compatible avec votre version de Chrome)
+
+
+## Spécificité
+Pour la création d'un utilisateur, on utilise l’employé nommé Enzo Tessier.
+S’il n’existe plus, il faut le recréer afin d’éviter d’altérer les tests des autres utilisateurs.
+Pour garantir qu’un employé soit toujours disponible, on peut remplacer la variable name par "a" : cela permettra de sélectionner automatiquement le premier employé dont le nom commence par "a".
+
 
 ## Installation
 1. Clonez le dépôt :
